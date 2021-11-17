@@ -1,0 +1,28 @@
+.tline {
+    color: #0ab;
+    background-color: #eee;
+    font-family: cursive;
+}
+
+.tcmd {
+    color: #ddd;
+    background-color: #333;
+    font-family:monospace
+}
+
+.tsubtitle {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.tcode {
+    box-shadow: inset 0px 0px 10px #ddd;
+}
+
+.tstring {
+    color: #c90;
+}
+
+.tvar {
+    color: #0ab
+}
