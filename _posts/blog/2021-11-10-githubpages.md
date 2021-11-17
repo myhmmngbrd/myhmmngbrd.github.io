@@ -1,6 +1,6 @@
 ---
 title: GitHub Pages 기초 정보
-categories: [Git, GitHub Pages]
+category: blog
 ---
 1. 튜토리얼 사이트
 - <a href="https://docs.github.com/en/pages">GitHub Pages 문서</a> 

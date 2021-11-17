@@ -1,0 +1,21 @@
+---
+title: Category
+layout: page
+permalink: /category/
+---
+
+<ul class="post-list">
+{% for c in site.categories %}
+    {%- assign name = c | first -%}
+    <li>
+        <span class="post-meta">{{ site.categories[name].size }} posts</span>
+        <a class="post-link" href="/{{ name }}">
+            {%- for i in site.data.categorymap -%}
+            {%- if i.category == name -%}
+                {{ i.name }}
+            {%- endif -%}
+            {%- endfor -%}
+        </a>
+    </li>
+{% endfor %}
+</ul>
