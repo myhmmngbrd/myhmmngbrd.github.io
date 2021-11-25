@@ -1,0 +1,20 @@
+{%- if page.category -%}
+    {%- for obj in site.data.categorymap -%}
+        {%- if obj.category == page.category -%}
+            {%- assign name = obj.name -%}
+        {%- endif-%}
+    {%- endfor -%}
+    <h3 class="category-name">{{ name | default: '카테고리 이름이 없습니다' }}</h3>
+    <ul>
+    {%- assign lst = site.categories[page.category] | reverse -%}
+    {%- for post in lst -%}       
+        {%- assign classlist = false -%}
+        {%- if post.title == page.title -%}
+            {%- assign classlist = 'class = "selected"' -%}
+        {%- endif -%}
+        <li {{ classlist | default: null }}>
+            <a href="{{ post.url | relative }}">{{ post.title }}</a>
+        </li>
+    {%- endfor -%}
+    </ul>
+{%- endif -%}

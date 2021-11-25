@@ -10,7 +10,7 @@ hr {
     margin-bottom: 45px;
 }
 
-pre, code {
+pre, code, .highlight {
     color: inherit;
     background-color: inherit;
     font-family: Monaco,Consolas,"Lucida Console",monospace;
@@ -18,31 +18,43 @@ pre, code {
 }
 
 
-.tline {
-    color: #0ab;
-    background-color: #eee;
-    font-family: cursive;
+.category-post-list {
+    //default
+    user-select: none;
+    position: sticky;
+    display:block;
+    float: left;
+    top: 10px;
+    left: 20px;
+    max-width: 200px;
+    margin-left: -300px;
+    // init
+    h1, h2, h3, h4, h5, h6 { margin: 0; padding: 5px; }
+    ul, ol, li { color: #999; margin:0; padding:0; list-style-type: none; text-decoration: none !important; }
+    a { text-decoration: none; color: inherit; cursor: default; display: block; }
+    span, li { padding: 0 5px; }
+
+    // selected
+    .selected { font-weight: 600; color: #333; }
+    li:not(.selected) { color: #999; }
+    li:hover { text-decoration: underline; color: #333; }
+    .category-name { color: #333; font-weight: 600; }
+    //목록 박스 왼쪽에 선
+    ul { border-left: 1.5px solid #ddd; }
 }
 
-.tcmd {
-    color: #ddd;
-    background-color: #333;
-    font-family:monospace
+@media screen and (max-width: 1000px) {
+    .category-post-list {
+        display:none;
+    }
 }
 
-.tsubtitle {
-    font-size: 1.2em;
-    font-weight: 600;
-}
 
-.tcode {
-    box-shadow: inset 0px 0px 10px #ddd;
-}
-
-.tstring {
-    color: #c90;
-}
-
-.tvar {
-    color: #0ab
+// post-footer.html
+.post-footer {
+    a { 
+        font-size: 1.25em;
+    }
+    .nav-prev { float:left; }
+    .nav-next { float:right; }
 }

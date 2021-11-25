@@ -25,39 +25,14 @@ layout: default
         {{ content }}
     </div>
 
+    <footer class="post-footer">
+        {%- include post-footer.html -%}
+    </footer>
+
     {%- if site.disqus.shortname -%}
         {%- include disqus_comments.html -%}
     {%- endif -%}
 
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 
-    <ul>
-        {%- for c in site.data.categories -%}
-            {%- assign category = c.name -%}
-            <li><p>{{ category }}</p></li>
-            {%- if c.sub -%}
-                {%- for sc in c.sub -%}
-                <ul>
-                    {%- assign subcategory = sc.name -%}
-                    <li><p>{{ subcategory }}</p></li>
-                    {%- if site.categories[subcategory] -%}
-                    <ol>
-                        {%- for page in site.categories[subcategory] reversed -%}
-                            <li><a href="{{page.url}}">{{ page.title }}</a></li>
-                        {%- endfor -%}
-                    </ol>
-                    {%- endif -%}
-                </ul>
-                {%- endfor -%}
-            {%- else -%}
-                {%- if site.categories[category] -%}
-                <ol>
-                    {%- for page in site.categories[category] reversed -%}
-                        <li><a href="{{page.url}}">{{ page.title }}</a></li>
-                    {%- endfor -%}
-                </ol>
-                {%- endif -%}
-            {%- endif -%}
-        {%- endfor -%}    
-    </ul>
 </article>

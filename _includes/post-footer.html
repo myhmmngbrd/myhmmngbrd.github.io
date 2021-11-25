@@ -1,0 +1,21 @@
+
+{%- if page.category -%}
+    {%- assign category = page.category-%}
+    {%- for value in site.categories[category] -%}
+        {%- if value.title == page.title -%}
+            {%- if forloop.index0 > 0 -%}
+                {%- assign next = forloop.index0 | minus: 1 -%}
+            {%- endif -%}
+            {%- if forloop.index < site.categories[category].size -%}
+                {%- assign previous = forloop.index0 | plus: 1 -%}
+            {%- endif -%}
+            {%- break -%}
+        {%- endif-%}
+    {%- endfor-%}
+    {%- if previous-%}
+    <a class="nav-prev" href={{ site.categories[category][previous].url }}>이전 글</a>
+    {%- endif -%}
+    {%- if next -%}
+    <a class="nav-next" href={{ site.categories[category][next].url }}>다음 글</a>
+    {%- endif -%}
+{%- endif -%}

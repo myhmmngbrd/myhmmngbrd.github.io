@@ -9,4 +9,16 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
+  
+  <style>
+    .delay {
+        transition: none p !important;
+    }
+  </style>
+  <script>
+      window.onload = () => {
+          document.querySelector('.delay').classList.remove('delay');
+      }
+  </script>
+
 </head>

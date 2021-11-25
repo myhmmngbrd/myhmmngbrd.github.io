@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
     {%- include head.html -%}
-
-    <body>
+    <body class="delay">
         {%- include header.html -%}
         <main class="page-content" aria-label="Content">
             <div class="wrapper">
+                
+            {%- if page.category -%}
+                <div class="category-post-list">
+                    {%- include post-index.html -%}
+                </div>
+            {%- endif -%}
+
             {{ content }}
             </div>
         </main>
-
         {%- include footer.html -%}
     </body>
-
 </html>
