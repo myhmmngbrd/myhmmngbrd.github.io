@@ -17,8 +17,8 @@ pre, code, .highlight {
     font-size: 14px;
 }
 
-
-.category-post-list {
+//top.html
+.table-of-posts {
     //default
     user-select: none;
     position: sticky;
@@ -43,12 +43,43 @@ pre, code, .highlight {
     ul { border-left: 1.5px solid #ddd; }
 }
 
-@media screen and (max-width: 1000px) {
-    .category-post-list {
-        display:none;
-    }
+
+//toc.html
+.table-of-contents {
+    user-select: none;
+    position: sticky;
+    display:block;
+    float: right;
+    top: 10px;
+    right: 20px;
+    width: 300px;
+    margin-right: -350px;
+    h3 { margin: 0; padding: 5px 10px; }
+    ul, li { margin: 0; padding: 0; list-style-type: none; color: #999; text-decoration: none !important; }
+    a { text-decoration: none; color: inherit; cursor: default; display:block; }
+    span, li { padding: 0 10px; }
+    // ul { border-left: 1.5px solid #ddd; }
+
+    a:hover { color: #333;}
+    .selected > a { font-weight: 600; color: #333; }
 }
 
+@media screen and (max-width: 1000px) {
+    .table-of-posts {
+        display:none;
+    }
+    .table-of-contents {
+        position: relative;
+        float: none;
+        top: 0;
+        right: unset;
+        width: unset;
+        margin-right: unset;
+        margin-bottom: 20px;
+
+        ul { border-left: unset; }
+    }
+}
 
 // post-footer.html
 .post-footer {
