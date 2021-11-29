@@ -2,20 +2,6 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-    {%- if page.category -%}
-    <div class="table-of-posts">
-        {%- include top.html -%}
-    </div>
-    {%- endif -%}
-
-    {%- if page.toc == true -%}
-    <div class="table-of-contents">
-        <h3>목차</h3>
-        {%- include toc.html html=content -%}
-    </div>
-    {%- endif -%}
-
     <header class="post-header">
         <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
         <p class="post-meta">

@@ -1,20 +1,33 @@
-{%- if page.category -%}
-    {%- for obj in site.data.categorymap -%}
-        {%- if obj.category == page.category -%}
-            {%- assign name = obj.name -%}
-        {%- endif-%}
-    {%- endfor -%}
-    <h3 class="category-name">{{ name | default: '카테고리 이름이 없습니다' }}</h3>
-    <ul>
-    {%- assign lst = site.categories[page.category] | reverse -%}
-    {%- for post in lst -%}       
-        {%- assign classlist = false -%}
-        {%- if post.title == page.title -%}
-            {%- assign classlist = 'class = "selected"' -%}
+<nav class="table-of-posts">
+    <h3>목록</h3>
+    <ul class="category-list">
+    {%- for category in site.categories %}
+        {% assign real_name = category | first %}
+        {% for obj in site.data.categorymap %}
+            {% if obj.category == real_name %}
+                {%- assign output_name = obj.name %}
+            {% endif %}
+        {% endfor -%}
+        <li>
+        {%- if page.category == null or page.category == real_name -%}
+            <!-- 카테고리가 없는(포스트가 아닌) 페이지 혹은 카테고리명이 현재 페이지의 카테고리와 일치하는 경우, 펼쳐서 보여줌 -->
+            <h3 class="category-name activate">{{ output_name }}</h3>
+            <ul class="post-list">
+            {%- assign lst = site.categories[real_name] | reverse -%}
+            {%- for post in lst -%}
+                {%- if post.title == page.title -%}
+                    <!-- 현재 페이지 -->
+                    <li class="activate"><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {%- else -%}
+                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {%- endif -%}
+            {%- endfor -%}
+            </ul>
+        {%- else -%}
+            <!-- 해당 포스트의 카테고리가 아닌 경우 --> 
+            <a href="/{{real_name}}"><h3 class="category-name">{{ output_name }}</h3></a>
         {%- endif -%}
-        <li {{ classlist | default: null }}>
-            <a href="{{ post.url | relative }}">{{ post.title }}</a>
-        </li>
+        </li>        
     {%- endfor -%}
     </ul>
-{%- endif -%}
+</nav>
