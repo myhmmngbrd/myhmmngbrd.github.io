@@ -36,6 +36,7 @@ layout: default
     {%- endif -%}
 
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+    {%- if page.toc -%}
     <script>
         class Toc {
             constructor(root, toc) {
@@ -88,4 +89,5 @@ layout: default
         const toc = new Toc(document.querySelector('.post-content'), document.querySelector('.table-of-contents'));
         
     </script>
+    {%- endif -%}
 </article>
